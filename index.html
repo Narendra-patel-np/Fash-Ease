@@ -4,15 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fash-Ease</title>
+    <title>FashEase- An Ease To Fashion</title>
     <style>
       body {
         margin: 0px;
-        padding: 0px;
+        padding-top: 0px;
         box-sizing: border-box;
       }
       #navbar {
-        position: sticky;
+        /* position: fixed; */
+        scroll-behavior: smooth;
         width: 100%;
         height: 80px;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -72,10 +73,46 @@
         width: 100%;
         /* border-radius: 160px; */
       }
+      #container {
+        width: 70%;
+        margin: 80px auto;
+        display: grid;
+        gap: 60px;
+        grid-template-columns: repeat(3, 1fr);
+      }
+      #container h4 {
+        padding-left: 20px;
+      }
+      .bottom {
+        display: flex;
+        justify-content: space-between;
+      }
+      .bottom img {
+        width: 50px;
+      }
+      .photo {
+        width: 100%;
+      }
+      #container > div {
+        height: 450px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+          rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+      }
+      .personImg {
+        width: 80px;
+        border-radius: 35px;
+        /* margin: auto; */
+      }
+      .person {
+        border: 1px solid red;
+      }
+      .person > img {
+        margin-top: 25px;
+      }
     </style>
   </head>
   <body>
-    <div id="navbar">
+    <header id="navbar">
       <div class="tab1">
         <img src="./White Modern Beauty Logo(1).png" alt="" />
         <a href="">WOMEN</a>
@@ -114,7 +151,7 @@
           <p>PROFILE</p>
         </div>
       </div>
-    </div>
+    </header>
 
     <div class="buttons">
       <button>
@@ -193,5 +230,78 @@
         <p>WINTER</p>
       </button>
     </div>
+
+    <div id="container"></div>
   </body>
+  <script>
+    let API = "https://6425ba6ed24d7e0de461a198.mockapi.io/product";
+    let data;
+    let body = document.body;
+    async function Newfetch() {
+      try {
+        let res = await fetch(API);
+        data = await res.json();
+        display(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    Newfetch();
+    let container = document.getElementById("container");
+
+    function display(data) {
+      data.forEach(function (product, index) {
+        let prod = document.createElement("div");
+        let anchor = document.createElement("a");
+        let name = document.createElement("h4");
+        name.innerText = product.name;
+
+        let image = document.createElement("img");
+        image.setAttribute("src", product.image);
+        image.setAttribute("class", "photo");
+
+        let bottom = document.createElement("div");
+        bottom.setAttribute("class", "bottom");
+        let person = document.createElement("div");
+        person.setAttribute("class", "person");
+        let follow = document.createElement("div");
+        let like = document.createElement("div");
+        let share = document.createElement("div");
+
+        let personImg = document.createElement("img");
+        personImg.setAttribute("src", product.person);
+        personImg.setAttribute("class", "personImg");
+
+        let by = document.createElement("p");
+        by.innerText = `By-- ${product.by}`;
+
+        let follower = document.createElement("p");
+        follower.innerText = `${product.followers} followers`;
+
+        let likeImg = document.createElement("img");
+        likeImg.setAttribute(
+          "src",
+          "https://imgs.search.brave.com/c6KN1TX0h_M4dur3y1dls7mnq4QJkOVJ3NF3yOkm8F0/rs:fit:632:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5W/U1Axc0tmaHQ2QXk0/T29jVkpXaFZRSGFG/aiZwaWQ9QXBp"
+        );
+        let likes = document.createElement("p");
+        likes.innerText = `${product.likes} Likes`;
+        let shareImg = document.createElement("img");
+        shareImg.setAttribute(
+          "src",
+          "https://imgs.search.brave.com/sF_-YfsINtA0C9ZpDEtv84Liw0rtinBqx1i80TlP23o/rs:fit:844:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5E/SGhyQkdveTd3V2o0/TFlOVkhVNXJRSGFF/SyZwaWQ9QXBp"
+        );
+        let shares = document.createElement("p");
+        shares.innerText = "Share";
+
+        anchor.append(name, image);
+        bottom.append(person, follow, like, share);
+        person.append(personImg);
+        follow.append(by, follower);
+        like.append(likeImg, likes);
+        share.append(shareImg, shares);
+        prod.append(anchor, bottom);
+        container.append(prod);
+      });
+    }
+  </script>
 </html>
