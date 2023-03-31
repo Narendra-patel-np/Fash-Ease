@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let data;
+    let api =
+      "https://www.asos.com/api/product/search/v2/categories/8409?offset=72&store=ROW&lang=en-GB&currency=GBP&rowlength=3&channel=desktop-web&country=IN&keyStoreDataversion=ornjx7v-36&limit=72";
+    async function Newfetch() {
+      try {
+        let res = await fetch(api);
+        data = await res.json();
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    Newfetch();
+  </script>
+</html>
