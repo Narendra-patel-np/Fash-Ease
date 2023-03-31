@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fash_-Ease/Men's</title>
+    <style>
+      #navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        height: 80px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .tab2 img {
+        width: 30px;
+        margin: auto;
+      }
+      .tab2 {
+        margin-right: 30px;
+        width: 17%;
+        display: flex;
+        justify-content: space-between;
+      }
+      .tab2 p {
+        /* margin: auto; */
+        font-size: 12px;
+      }
+      .tab2 > div:nth-child(3) > p {
+        margin-top: 15px;
+      }
+      .tab1 img {
+        width: 113px;
+        padding-bottom: 1px;
+      }
+      .tab1 a {
+        color: black;
+        text-decoration: none;
+      }
+      .tab1 a:nth-child(6) {
+        color: red;
+      }
+      .tab1 {
+        padding-left: 20px;
+        width: 40%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      #container {
+        /* border: 1px solid red; */
+        margin-top: 200px;
+        width: 70%;
+        margin: auto;
+        display: grid;
+        gap: 70px;
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: 100px;
+      }
+      #container > div {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        background-color: white;
+      }
+      #container img {
+        width: 100%;
+      }
+      #container h3 {
+        padding-left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header id="navbar">
+      <div class="tab1">
+        <img src="./White Modern Beauty Logo(1).png" alt="" />
+        <a href="">WOMEN</a>
+        <a href="">MEN</a>
+        <a href="">KIDS</a>
+        <a href="">HOME</a>
+        <a href="">OFFERS</a>
+      </div>
+      <div class="tab2">
+        <div>
+          <img
+            src="https://imgs.search.brave.com/SrjVJWDFk1yvi4_JJMOaDLowZEzLkj2jNvgzSKWH0dM/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5t/QVdKODZMakh3ZFhq/RVlJODRKd2dBSGFI/YSZwaWQ9QXBp"
+            alt=""
+          />
+          <p>SCRAPBOOK</p>
+        </div>
+        <div>
+          <img
+            src="https://imgs.search.brave.com/4Zbc8akxQ9ciqRwqO0Uc0dffSxGeRr0lx2VXo86n2w0/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5N/NVNaYWJPcU1rMWl5/SjJPVlNkbHpBSGFI/YSZwaWQ9QXBp"
+            alt=""
+          />
+          <p>SEARCH</p>
+        </div>
+        <div>
+          <img
+            src="https://imgs.search.brave.com/rrvLjKMeYkrPgSfBdLYA_VPbJzSqFPYr8foxeYSTQ7s/rs:fit:567:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC45/VDRWbENJWlpJNXNy/bTBkZE5NY0V3SGFH/TSZwaWQ9QXBp"
+            alt=""
+          />
+          <p>CART</p>
+        </div>
+        <div>
+          <img
+            src="https://imgs.search.brave.com/sQOlmQWfhK0c06FxF5WoqXGg7Oc6u2uyrRDYUbtopOU/rs:fit:453:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5q/ODg1QWQ1anlYRUdI/X2VBUlZlRUtBSGFI/diZwaWQ9QXBp"
+            alt=""
+          />
+          <p>PROFILE</p>
+        </div>
+      </div>
+    </header>
+    <div class="sorting"></div>
+    <div id="container"></div>
+  </body>
+  <script>
+    let body = document.body;
+    let data;
+    let api = "https://6425ba6ed24d7e0de461a198.mockapi.io/mens";
+    async function fetching() {
+      try {
+        let res = await fetch(api);
+        let res2 = await res.json();
+        data = res2;
+        display(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetching();
+
+    let container = document.getElementById("container");
+
+    function display(data) {
+      container.innerHTML = "";
+
+      // for (let i = 0; i < data.length; i++)
+      data.forEach(function (product, index) {
+        let prod = document.createElement("div");
+        let anchor = document.createElement("a");
+
+        let image = document.createElement("img");
+        image.setAttribute("src", product.image);
+        image.setAttribute("class", "photo");
+        let title = document.createElement("h3");
+        title.innerText = product.name;
+
+        let description = document.createElement("p");
+        description.innerText = product.description;
+        let price = document.createElement("h4");
+        price.innerText = `Price :₹ ${product.price}`;
+        let rating = document.createElement("p");
+        rating.innerText = `Rating : ${Number(product.rating) / 10}`;
+
+        anchor.append(image, title, description, price, rating);
+        prod.append(anchor);
+        container.append(prod);
+        // }
+      });
+    }
+  </script>
+</html>
