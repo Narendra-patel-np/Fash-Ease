@@ -4,7 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fash_-Ease/Men's</title>
+    <title>Fash_Ease/Men's</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
+      integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <style>
       #navbar {
         position: fixed;
@@ -34,6 +41,9 @@
       }
       .tab2 > div:nth-child(3) > p {
         margin-top: 15px;
+      }
+      .tab2 > div:nth-child(2) > p {
+        margin-top: 28px;
       }
       .tab1 img {
         width: 113px;
@@ -67,18 +77,78 @@
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         background-color: white;
       }
+      #container p {
+        color: rgb(89, 136, 42);
+        padding-left: 20px;
+      }
+      #container h3 {
+        color: black;
+      }
+      #container h4 {
+        color: crimson;
+        padding-left: 20px;
+      }
       #container img {
         width: 100%;
       }
       #container h3 {
         padding-left: 20px;
       }
+
+      #searchBox {
+        /* border: 1px solid green; */
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: top;
+      }
+
+      #searchBox > p {
+        margin-top: 10px;
+      }
+      .searchText {
+        width: 0rem;
+        border-radius: 5rem;
+        border: none;
+        outline: none;
+        transition: all 0.2s linear;
+      }
+      .searchText:focus {
+        outline: black;
+      }
+      .searchBtn {
+        /* border: 1px solid red; */
+        text-decoration: none;
+        width: 30px;
+        height: 30px;
+        border-radius: 3rem;
+        background-color: rgb(249, 249, 249);
+        color: black;
+        position: absolute;
+        display: flex;
+        right: 1rem;
+        padding-bottom: 10px;
+      }
+      #searchBox:hover + p {
+        display: none;
+      }
+      #searchBox:hover > .searchText {
+        margin-top: 10px;
+        width: 250px;
+        padding: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+      a {
+        text-decoration: none;
+      }
     </style>
   </head>
   <body>
     <header id="navbar">
       <div class="tab1">
-        <img src="./White Modern Beauty Logo(1).png" alt="" />
+        <a href="./index.html"
+          ><img src="./White Modern Beauty Logo(1).png" alt=""
+        /></a>
         <a href="">WOMEN</a>
         <a href="">MEN</a>
         <a href="">KIDS</a>
@@ -94,10 +164,17 @@
           <p>SCRAPBOOK</p>
         </div>
         <div>
-          <img
-            src="https://imgs.search.brave.com/4Zbc8akxQ9ciqRwqO0Uc0dffSxGeRr0lx2VXo86n2w0/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5N/NVNaYWJPcU1rMWl5/SjJPVlNkbHpBSGFI/YSZwaWQ9QXBp"
-            alt=""
-          />
+          <div id="searchBox">
+            <input
+              type="text"
+              class="searchText"
+              id="search"
+              placeholder="SEARCH"
+            />
+            <a href="" class="searchBtn">
+              <i class="fas fa-search fa-2x"></i>
+            </a>
+          </div>
           <p>SEARCH</p>
         </div>
         <div>
@@ -120,6 +197,18 @@
     <div id="container"></div>
   </body>
   <script>
+    let searchbar = document.getElementById("searchbar");
+    let searchtext = document.getElementById("search");
+    search.addEventListener("input", function () {
+      filtered = data.filter(function (item, index) {
+        if (item.name.toUpperCase().includes(searchtext.value.toUpperCase())) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+      display(filtered);
+    });
     let body = document.body;
     let data;
     let api = "https://6425ba6ed24d7e0de461a198.mockapi.io/mens";
@@ -144,21 +233,24 @@
       data.forEach(function (product, index) {
         let prod = document.createElement("div");
         let anchor = document.createElement("a");
-
+        anchor.setAttribute("href", "./product.html");
+        anchor.addEventListener("click", function () {
+          let products = [];
+          products.push(product);
+          localStorage.setItem("Products", JSON.stringify(products));
+        });
         let image = document.createElement("img");
         image.setAttribute("src", product.image);
         image.setAttribute("class", "photo");
         let title = document.createElement("h3");
         title.innerText = product.name;
 
-        let description = document.createElement("p");
-        description.innerText = product.description;
+        let by = document.createElement("p");
+        by.innerText = ` By-${product.by}`;
         let price = document.createElement("h4");
         price.innerText = `Price :₹ ${product.price}`;
-        let rating = document.createElement("p");
-        rating.innerText = `Rating : ${Number(product.rating) / 10}`;
 
-        anchor.append(image, title, description, price, rating);
+        anchor.append(image, title, by, price);
         prod.append(anchor);
         container.append(prod);
         // }
