@@ -60,7 +60,7 @@
         justify-content: space-around;
       }
       #detail img {
-        width: 550px;
+        width: 68%;
         display: block;
         margin: auto;
       }
@@ -109,7 +109,7 @@
         width: 70%;
       }
       .selectsize > div {
-        font-size: 24px;
+        font-size: 23px;
         /* padding: 0px; */
         display: flex;
         justify-content: center;
@@ -120,14 +120,19 @@
       }
       .selectsize > div > h5 {
         margin: 0px;
-        /* padding: 0px; */
+      }
+      a {
+        text-decoration: none;
+        color: black;
       }
     </style>
   </head>
   <body>
     <header id="navbar">
       <div class="tab1">
-        <img src="./White Modern Beauty Logo(1).png" alt="" />
+        <a href="./index.html"
+          ><img src="./White Modern Beauty Logo(1).png" alt=""
+        /></a>
         <a href="">WOMEN</a>
         <a href="./Men.html">MEN</a>
         <a href="">KIDS</a>
@@ -150,11 +155,13 @@
           <p>SEARCH</p>
         </div>
         <div>
-          <img
-            src="https://imgs.search.brave.com/rrvLjKMeYkrPgSfBdLYA_VPbJzSqFPYr8foxeYSTQ7s/rs:fit:567:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC45/VDRWbENJWlpJNXNy/bTBkZE5NY0V3SGFH/TSZwaWQ9QXBp"
-            alt=""
-          />
-          <p>CART</p>
+          <a href="./cart.html">
+            <img
+              src="https://imgs.search.brave.com/rrvLjKMeYkrPgSfBdLYA_VPbJzSqFPYr8foxeYSTQ7s/rs:fit:567:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC45/VDRWbENJWlpJNXNy/bTBkZE5NY0V3SGFH/TSZwaWQ9QXBp"
+              alt=""
+            />
+            <p>CART</p>
+          </a>
         </div>
         <div>
           <img
@@ -174,7 +181,7 @@
     } else {
       products = JSON.parse(products);
     }
-    console.log(products);
+    // console.log(products);
     let box = document.getElementById("detail");
     let imageDiv = document.createElement("div");
     let image = document.createElement("img");
@@ -213,13 +220,74 @@
     size3.append(num3);
     size4.append(num4);
 
+    size1.addEventListener("click", function () {
+      size1.style.backgroundColor = "grey";
+      size1.style.color = "white";
+      size2.style.backgroundColor = "white";
+      size2.style.color = "black";
+      size3.style.backgroundColor = "white";
+      size3.style.color = "black";
+      size4.style.color = "black";
+      size4.style.backgroundColor = "white";
+    });
+    size2.addEventListener("click", function () {
+      size2.style.backgroundColor = "grey";
+      size1.style.backgroundColor = "white";
+      size1.style.color = "black";
+      size3.style.backgroundColor = "white";
+      size3.style.color = "black";
+      size4.style.color = "black";
+      size4.style.backgroundColor = "white";
+      size2.style.color = "white";
+    });
+    size3.addEventListener("click", function () {
+      size3.style.backgroundColor = "grey";
+      size3.style.color = "white";
+      size1.style.backgroundColor = "white";
+      size1.style.color = "black";
+      size2.style.backgroundColor = "white";
+      size2.style.color = "black";
+      size4.style.color = "black";
+      size4.style.backgroundColor = "white";
+    });
+    size4.addEventListener("click", function () {
+      size4.style.backgroundColor = "grey";
+      size4.style.color = "white";
+      size1.style.backgroundColor = "white";
+      size1.style.color = "black";
+      size3.style.backgroundColor = "white";
+      size3.style.color = "black";
+      size2.style.color = "black";
+      size2.style.backgroundColor = "white";
+    });
     selectSize.append(ptag, size1, size2, size3, size4);
     let price = document.createElement("h3");
     price.innerText = `₹ ${products[0].price}`;
 
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
     let add = document.createElement("button");
     add.innerText = "Add To Cart";
-
+    add.addEventListener("click", function () {
+      if (check(products[0]) === true) {
+        alert("product already in the cart");
+      } else {
+        add.style.backgroundColor = "brown";
+        cart.push({ ...products[0], size: 40 });
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
+    });
+    // console.log(cart);
+    function check(info) {
+      for (let i = 0; i < cart.length; i++) {
+        if (info.id === cart[i].id) {
+          // console.log(cart[i].id);
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
     imageDiv.append(image);
     infoDiv.append(name, brand, rating, description, selectSize, price, add);
     box.append(imageDiv, infoDiv);
