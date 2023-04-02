@@ -81,7 +81,7 @@
         margin-bottom: 50px;
       }
       .buttons > button {
-        width: 8.75%;
+        width: 8.5%;
         border: none;
         /* display: block; */
         margin: auto;
@@ -144,6 +144,33 @@
       }
       .image > img {
         width: 50%;
+      }
+      @media only screen and (max-width: 700px) {
+        .tab1 > a:nth-child(2) {
+          display: none;
+        }
+        .tab1 > a:nth-child(3) {
+          display: none;
+        }
+        .tab1 > a:nth-child(4) {
+          display: none;
+        }
+        .tab1 > a:nth-child(5) {
+          display: none;
+        }
+        .tab1 > a:nth-child(6) {
+          display: none;
+        }
+        #container {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+        }
+        #navbar {
+          justify-content: space-around;
+        }
+        .tab2 {
+          margin: auto;
+        }
       }
     </style>
   </head>
@@ -285,22 +312,6 @@
   </body>
 
   <script>
-    // let images = [
-    //   "https://img1.junaroad.com//assets/images/mobileNotif/img-1651469168362.jpg?crsl_pos=0",
-    //   "https://img1.junaroad.com//assets/images/mobileNotif/img-1674029296684.jpg?crsl_pos=0",
-    //   "https://img1.junaroad.com//assets/images/mobileNotif/img-1677239926933.jpg?crsl_pos=0",
-    //   "https://img1.junaroad.com//assets/images/mobileNotif/img-1676438894037.jpg?crsl_pos=0",
-    //   "https://img1.junaroad.com//assets/images/mobileNotif/img-1678466728484.jpg?crsl_pos=0",
-    //   "https://img0.junaroad.com/images/banners/B2G1_13january2023_1673587401792.jpg?crsl_pos=0",
-    //   "https://img1.junaroad.com//assets/images/mobileNotif/img-1652694665568.jpg?crsl_pos=0",
-    //   "https://img1.junaroad.com//assets/images/mobileNotif/img-1679910119705.jpg?crsl_pos=0",
-    //   "https://img1.junaroad.com//assets/images/mobileNotif/img-1679910400865.jpg?crsl_pos=0",
-    //   "https://img1.junaroad.com//assets/images/mobileNotif/img-1676008328934.jpg?crsl_pos=0",
-    //   "https://img1.junaroad.com//assets/images/mobileNotif/img-1667388470485.jpg?crsl_pos=0",
-    //   "https://img1.junaroad.com//assets/images/mobileNotif/img-1658918101342.jpg?crsl_pos=0",
-    //   "https://img1.junaroad.com//assets/images/mobileNotif/img-1667988209100.jpg?crsl_pos=0",
-    // ];
-
     let API = "https://6425ba6ed24d7e0de461a198.mockapi.io/product";
     let data;
     let body = document.body;
@@ -375,34 +386,4 @@
       // });
     }
   </script>
-  <!-- <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
-    integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  ></script>
-  <script
-  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
-  integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-  ></script>
-  <script>
-    $(".owl-carousel").owlCarousel({
-      loop: true,
-      margin: 10,
-      nav: true,
-      responsive: {
-        0: {
-          items: 1,
-        },
-        600: {
-          items: 3,
-        },
-        1000: {
-          items: 5,
-        },
-      },
-    });
-  </script> -->
 </html>

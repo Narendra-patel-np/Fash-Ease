@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product</title>
+    <style>
+      #navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        height: 80px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .tab2 img {
+        width: 30px;
+        margin: auto;
+      }
+      .tab2 {
+        margin-right: 30px;
+        width: 17%;
+        display: flex;
+        justify-content: space-between;
+      }
+      .tab2 p {
+        /* margin: auto; */
+        font-size: 12px;
+      }
+      .tab2 > div:nth-child(3) > p {
+        margin-top: 15px;
+      }
+
+      .tab1 img {
+        width: 113px;
+        padding-bottom: 1px;
+      }
+      .tab1 a {
+        color: black;
+        text-decoration: none;
+      }
+      .tab1 a:nth-child(6) {
+        color: red;
+      }
+      .tab1 {
+        padding-left: 20px;
+        width: 40%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      #detail {
+        margin-top: 100px;
+        display: flex;
+        justify-content: space-around;
+      }
+      #detail img {
+        width: 68%;
+        display: block;
+        margin: auto;
+      }
+      #detail > div {
+        width: 45%;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      }
+      #detail h2 {
+        font-size: 38px;
+        padding-left: 20px;
+      }
+      #detail h3 {
+        font-size: 28px;
+        padding-left: 20px;
+        color: crimson;
+      }
+      #detail h4 {
+        font-size: 28px;
+        padding-left: 20px;
+      }
+      #detail > div > h2 + p {
+        color: rgb(73, 111, 34);
+        font-size: 24px;
+      }
+      #detail > div > h4 + p {
+        width: 70%;
+        color: rgb(8, 9, 8);
+      }
+      #detail p {
+        font-size: 22px;
+        padding-left: 20px;
+      }
+      #detail button {
+        display: block;
+        margin: 30px auto;
+        padding: 10px;
+        width: 200px;
+        border: none;
+        font-size: 18px;
+        border-radius: 8px;
+        background-color: rgb(129, 214, 43);
+      }
+      .selectsize {
+        display: flex;
+        justify-content: space-around;
+        width: 70%;
+      }
+      .selectsize > div {
+        font-size: 23px;
+        /* padding: 0px; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 10%;
+        border: 1px solid black;
+        border-radius: 20px;
+      }
+      .selectsize > div > h5 {
+        margin: 0px;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <header id="navbar">
+      <div class="tab1">
+        <a href="./index.html"
+          ><img src="./White Modern Beauty Logo(1).png" alt=""
+        /></a>
+        <a href="">WOMEN</a>
+        <a href="./Men.html">MEN</a>
+        <a href="">KIDS</a>
+        <a href="">HOME</a>
+        <a href="">OFFERS</a>
+      </div>
+      <div class="tab2">
+        <div>
+          <img
+            src="https://imgs.search.brave.com/SrjVJWDFk1yvi4_JJMOaDLowZEzLkj2jNvgzSKWH0dM/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5t/QVdKODZMakh3ZFhq/RVlJODRKd2dBSGFI/YSZwaWQ9QXBp"
+            alt=""
+          />
+          <p>SCRAPBOOK</p>
+        </div>
+        <div>
+          <img
+            src="https://imgs.search.brave.com/4Zbc8akxQ9ciqRwqO0Uc0dffSxGeRr0lx2VXo86n2w0/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5N/NVNaYWJPcU1rMWl5/SjJPVlNkbHpBSGFI/YSZwaWQ9QXBp"
+            alt=""
+          />
+          <p>SEARCH</p>
+        </div>
+        <div>
+          <a href="./cart.html">
+            <img
+              src="https://imgs.search.brave.com/rrvLjKMeYkrPgSfBdLYA_VPbJzSqFPYr8foxeYSTQ7s/rs:fit:567:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC45/VDRWbENJWlpJNXNy/bTBkZE5NY0V3SGFH/TSZwaWQ9QXBp"
+              alt=""
+            />
+            <p>CART</p>
+          </a>
+        </div>
+        <div>
+          <img
+            src="https://imgs.search.brave.com/sQOlmQWfhK0c06FxF5WoqXGg7Oc6u2uyrRDYUbtopOU/rs:fit:453:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5q/ODg1QWQ1anlYRUdI/X2VBUlZlRUtBSGFI/diZwaWQ9QXBp"
+            alt=""
+          />
+          <p>PROFILE</p>
+        </div>
+      </div>
+    </header>
+    <div id="detail"></div>
+  </body>
+  <script>
+    let products = localStorage.getItem("Products");
+    if (products === null) {
+      products = [];
+    } else {
+      products = JSON.parse(products);
+    }
+    // console.log(products);
+    let box = document.getElementById("detail");
+    let imageDiv = document.createElement("div");
+    let image = document.createElement("img");
+    image.setAttribute("src", products[0].image);
+
+    let infoDiv = document.createElement("div");
+    let name = document.createElement("h2");
+    name.innerText = products[0].name;
+
+    let brand = document.createElement("p");
+    brand.innerText = `By ${products[0].by}`;
+
+    let rating = document.createElement("h4");
+    rating.innerText = `Rating-${Number(products[0].rating) / 10}`;
+    let description = document.createElement("p");
+    description.innerText = products[0].description;
+
+    let selectSize = document.createElement("div");
+    selectSize.setAttribute("class", "selectsize");
+    let ptag = document.createElement("p");
+    let size1 = document.createElement("div");
+    let size2 = document.createElement("div");
+    let size3 = document.createElement("div");
+    let size4 = document.createElement("div");
+    let num1 = document.createElement("h5");
+    let num2 = document.createElement("h5");
+    let num3 = document.createElement("h5");
+    let num4 = document.createElement("h5");
+    ptag.innerText = "Select Size";
+    num1.innerText = "38";
+    num2.innerText = "40";
+    num3.innerText = "42";
+    num4.innerText = "44";
+    size1.append(num1);
+    size2.append(num2);
+    size3.append(num3);
+    size4.append(num4);
+
+    size1.addEventListener("click", function () {
+      size1.style.backgroundColor = "grey";
+      size1.style.color = "white";
+      size2.style.backgroundColor = "white";
+      size2.style.color = "black";
+      size3.style.backgroundColor = "white";
+      size3.style.color = "black";
+      size4.style.color = "black";
+      size4.style.backgroundColor = "white";
+    });
+    size2.addEventListener("click", function () {
+      size2.style.backgroundColor = "grey";
+      size1.style.backgroundColor = "white";
+      size1.style.color = "black";
+      size3.style.backgroundColor = "white";
+      size3.style.color = "black";
+      size4.style.color = "black";
+      size4.style.backgroundColor = "white";
+      size2.style.color = "white";
+    });
+    size3.addEventListener("click", function () {
+      size3.style.backgroundColor = "grey";
+      size3.style.color = "white";
+      size1.style.backgroundColor = "white";
+      size1.style.color = "black";
+      size2.style.backgroundColor = "white";
+      size2.style.color = "black";
+      size4.style.color = "black";
+      size4.style.backgroundColor = "white";
+    });
+    size4.addEventListener("click", function () {
+      size4.style.backgroundColor = "grey";
+      size4.style.color = "white";
+      size1.style.backgroundColor = "white";
+      size1.style.color = "black";
+      size3.style.backgroundColor = "white";
+      size3.style.color = "black";
+      size2.style.color = "black";
+      size2.style.backgroundColor = "white";
+    });
+    selectSize.append(ptag, size1, size2, size3, size4);
+    let price = document.createElement("h3");
+    price.innerText = `₹ ${products[0].price}`;
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let add = document.createElement("button");
+    add.innerText = "Add To Cart";
+    add.addEventListener("click", function () {
+      if (check(products[0]) === true) {
+        alert("product already in the cart");
+      } else {
+        add.style.backgroundColor = "brown";
+        cart.push({ ...products[0], size: 40 });
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
+    });
+    // console.log(cart);
+    function check(info) {
+      for (let i = 0; i < cart.length; i++) {
+        if (info.id === cart[i].id) {
+          // console.log(cart[i].id);
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
+    imageDiv.append(image);
+    infoDiv.append(name, brand, rating, description, selectSize, price, add);
+    box.append(imageDiv, infoDiv);
+  </script>
+</html>
